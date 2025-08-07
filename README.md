@@ -178,9 +178,26 @@ boards  CMakeLists.txt  Kconfig  prac0  prac1  west.yml  zephyr
 $ west build
 ```
 
+## Development 
+
+This section describes some additional tools that may be useful during
+development.
+
+### Just
+
 If you want to save yourself some effort when repeatedly running commands,
-I suggest using either `make` or `just` to write some simple recipes, for example
-`just build-prac0` could map to `west build -p -b board -d prac0/build prac0`.
+I suggest using either `make` or `just` to write some simple recipes. I find
+`just` more forgiving.
+
+A simple `Justfile` is included in this repo and contains a parameterised
+recipe for building arbitrary targets (assuming you follow the flat project
+structure described above). Assuming you've installed `just`, you can run:
+
+```
+just build prac0
+```
+
+You can configure the `default_board` in the `Justfile`.
 
 
 [zephyr-west-t2]:https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
