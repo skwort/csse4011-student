@@ -199,6 +199,39 @@ just build prac0
 
 You can configure the `default_board` in the `Justfile`.
 
+### Clangd
+
+Clangd is a language server for C/C++. It gives your editor the ability to do
+things like jump to definitions (Ctrl+Click), show type info on hover, and
+provide autocomplete. This makes it much easier to navigate through code —
+especially Zephyr’s source — and understand how things are connected.
+
+The .clangd file in this repo is set up to enable that, but only for prac0
+right now.
+
+If you want to get the same functionality for other targets (like prac3), copy
+one of the existing blocks in .clangd and update the paths and match patterns.
+For example:
+
+```
+If:
+  PathMatch: ^prac0.*
+
+CompileFlags:
+  CompilationDatabase: ./prac0/build/
+---
+If:
+  PathMatch: ^prac3.*
+
+CompileFlags:
+  CompilationDatabase: ./prac3/build/
+```
+
+You need to include the `---` to separate `If` blocks.
+
+I won't go into detail on how this works. Nor will I explain how to install
+clangd. You should do your own research.
+
 
 [zephyr-west-t2]:https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
 [csse4011-sdk]:https://github.com/skwort/csse4011-sdk
