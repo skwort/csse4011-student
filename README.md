@@ -10,23 +10,23 @@ The first step is setup a local folder for development. Assuming you're using
 either WSL, Linux or MacOS, create a root folder as follows:
 
 ```sh
-sam@raskolnikov:~ 
+sam@raskolnikov:~
 $ mkdir csse4011
 ```
 
 Enter the directory, then create and source a virtual environment.
 
 ```sh
-sam@raskolnikov:~ 
+sam@raskolnikov:~
 $ mkdir csse4011
-sam@raskolnikov:~ 
+sam@raskolnikov:~
 $ cd csse4011/
-sam@raskolnikov:~/csse4011 
+sam@raskolnikov:~/csse4011
 $ python -m venv .venv
-sam@raskolnikov:~/csse4011 
+sam@raskolnikov:~/csse4011
 $ source .venv/bin/activate
-(.venv) sam@raskolnikov:~/csse4011 
-$ 
+(.venv) sam@raskolnikov:~/csse4011
+$
 ```
 
 If the `(.venv)` has been appended to your prompt as above, then you've probably
@@ -46,7 +46,7 @@ can research and install `uv` if you want to go fast.
 
 ```sh
 $ source .venv/bin/activate
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ pip install west
 Collecting west
 ...
@@ -55,7 +55,7 @@ Collecting west
 With `west` installed we can now initialise the *west workspace*.
 
 ```shell
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ west init -m https://github.com/skwort/csse4011-student --mr main
 === Initializing in /home/sam/csse4011
 --- Cloning manifest repository from https://github.com/skwort/csse4011-student, rev. main
@@ -74,7 +74,7 @@ This command will clone the repo and setup some basic west metadata. Let's poke
 around a little bit.
 
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ ls
 firmware
 ```
@@ -86,7 +86,7 @@ this folder. More on that in a little bit.
 To finalise the setup, we need to pull in all the dependencies.
 
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ west update
 ...
 ```
@@ -95,7 +95,7 @@ This may take a few minutes. Listing the directory, we can see that `west` has
 pull in quite a few dependencies.
 
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ ls
 csse4011-sdk  firmware  modules  tools  zephyr
 ```
@@ -106,21 +106,21 @@ examples for the specific boards we are using this semester.
 Next, export the Zephyr CMake package:
 
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ west zephyr-export
 ```
 
 Then install Zephyr's python dependencies:
 
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
+(.venv) sam@raskolnikov:~/csse4011
 $ west packages pip --install
 ```
 
 Lastly, source the Zephyr environment:
 ```sh
-(.venv) sam@raskolnikov:~/csse4011 
-$ source zephyr/zephyr-env.sh 
+(.venv) sam@raskolnikov:~/csse4011
+$ source zephyr/zephyr-env.sh
 ```
 
 Now that you have a workspace setup you can build a test application.
@@ -128,7 +128,7 @@ Now that you have a workspace setup you can build a test application.
 ## Usage
 
 This repo,  avaliable locally as `firmware` when setup using `west` as above,
-will be your working directory as you develop code throughout the semester. 
+will be your working directory as you develop code throughout the semester.
 
 Assuming you've got the a working Zephyr installation, you can build the test
 blinky application, available within `prac0`.
@@ -178,7 +178,7 @@ boards  CMakeLists.txt  Kconfig  prac0  prac1  west.yml  zephyr
 $ west build
 ```
 
-## Development 
+## Development
 
 This section describes some additional tools that may be useful during
 development.
@@ -231,6 +231,16 @@ You need to include the `---` to separate `If` blocks.
 
 I won't go into detail on how this works. Nor will I explain how to install
 clangd. You should do your own research.
+
+Clangd can also be used to automatically format your code using `clang-format`.
+This repository contains a simple `.clang-format` file this purpose. The
+provided file adapts Zephyr's `.clang-format` file to use spaces instead of
+tabs with an indent-width of four.
+
+If you're using VSCode or similar, I suggest enabling `formatOnSave` or the
+equivalent feature in the editor of your choice so that your code is always
+formatted nicely. If you've never used automated formatting it will rock your
+world.
 
 
 [zephyr-west-t2]:https://docs.zephyrproject.org/latest/develop/west/workspaces.html#west-t2
