@@ -35,8 +35,9 @@ int heartbeat_init_start(k_timeout_t duration)
 
     timer_duration = duration;
 
-    if (timer_initialised)
+    if (timer_initialised) {
         goto start;
+    }
 
     if (!gpio_is_ready_dt(&hb)) {
         LOG_ERR("Heartbeat GPIO is not ready.");
@@ -44,9 +45,9 @@ int heartbeat_init_start(k_timeout_t duration)
     }
 
     err = gpio_pin_configure_dt(&hb, GPIO_OUTPUT_ACTIVE);
-	if (err < 0) {
-		return err;
-	}
+    if (err < 0) {
+        return err;
+    }
 
     k_timer_init(&heartbeat_timer, &heartbeat_trigger, NULL);
     timer_initialised = true;
@@ -60,4 +61,3 @@ void heartbeat_stop(void)
 {
     k_timer_stop(&heartbeat_timer);
 }
-
