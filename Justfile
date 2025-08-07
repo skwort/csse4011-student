@@ -4,7 +4,7 @@ build target:
     west build -p \
         -b {{default_board}} \
         -d {{target}}/build \
-        {{target}} 
+        {{target}}
 
     # Fix clangd warnings
     @sed -i 's/-fno-reorder-functions//g' {{target}}/build/compile_commands.json
