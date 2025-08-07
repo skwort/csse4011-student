@@ -1,0 +1,13 @@
+{
+    "recommendations": [
+        "llvm-vs-code-extensions.vscode-clangd",  // clangd
+        "ms-vscode.cmake-tools",                  // CMake
+        "nordic-semiconductor.nrf-devicetree",    // Devicetree syntax support
+        "nordic-semiconductor.nrf-terminal",      // nRF terminal is good
+        "nordic-semiconductor.nrf-kconfig",       // Kconfig syntax support
+        "trond-snekvik.gnu-mapfiles",             // GNU Linker Map files support
+        "nefrob.vscode-just-syntax",              // Justfile syntax highlighting
+        "editorconfig.editorconfig",              // EditorConfig
+        "lextudio.restructuredtext-pack"          // RST support for Zephyr READMEs
+    ]
+}
