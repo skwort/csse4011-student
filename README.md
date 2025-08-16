@@ -87,12 +87,13 @@ To finalise the setup, we need to pull in all the dependencies.
 
 ```sh
 (.venv) sam@raskolnikov:~/csse4011
-$ west update
+$ west update -o=--depth=1
 ...
 ```
 
-This may take a few minutes. Listing the directory, we can see that `west` has
-pull in quite a few dependencies.
+This may take a few minutes, but passing in `--depth=1` should help speed it up.
+Listing the directory, we can see that `west` has pulled in quite a few
+dependencies.
 
 ```sh
 (.venv) sam@raskolnikov:~/csse4011
