@@ -7,15 +7,22 @@
 # Below are the relevant parts of my system config.
 #
 # ```nix
-# nixpkgs.config.allowUnfree = true;
-# nixpkgs.config.segger-jlink.acceptLicense = true;
+# nixpkgs.config = {
+#   allowUnfree = true;
+#
+#   # JLink
+#   segger-jlink.acceptLicense = true;
+#   permittedInsecurePackages = [
+#     "segger-jlink-qt4-874"
+#   ];
+# };
 #
 # ...
 #
 # -- Adding udev rules so we can access the USB devices as non-root
 # services = {
 #   udev.packages = [
-#     pkgs.segger-jlink-headless
+#     pkgs.segger-jlink
 #     pkgs.nrf-udev
 #   ];
 # ...
@@ -26,7 +33,7 @@
 #       # Embedded
 #       nrfutil
 #       nrfconnect
-#       segger-jlink-headless
+#       segger-jlink
 #     ];
 #   };
 # };
