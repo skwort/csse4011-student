@@ -3,3 +3,33 @@ If:
 
 CompileFlags:
   CompilationDatabase: ./prac0/build/
+---
+If:
+  PathMatch: ^prac1.*
+
+CompileFlags:
+  CompilationDatabase: ./prac1/build/
+---
+If:
+  PathMatch: ^prac2.*
+
+CompileFlags:
+  CompilationDatabase: ./prac2/build/
+---
+If:
+  PathMatch: ^prac3.*
+
+CompileFlags:
+  CompilationDatabase: ./prac3/build/
+---
+If:
+  PathMatch: ^prac4.*
+
+CompileFlags:
+  CompilationDatabase: ./prac4/build/
+---
+If:
+  PathMatch: ^prac5.*
+
+CompileFlags:
+  CompilationDatabase: ./prac5/build/
