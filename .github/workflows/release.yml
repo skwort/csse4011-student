@@ -1,0 +1,29 @@
+name: Release firmware template
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+
+      - name: Create tarball
+        run: |
+          tar czf firmware.tar.gz \
+            --transform 's,^,firmware/,' \
+            --exclude='.git' \
+            --exclude='.github' \
+            .
+
+      - name: Create release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: firmware.tar.gz
