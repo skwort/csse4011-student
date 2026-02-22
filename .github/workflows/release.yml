@@ -17,11 +17,12 @@ jobs:
 
       - name: Create tarball
         run: |
-          tar czf firmware.tar.gz \
+          tar czf /tmp/firmware.tar.gz \
             --transform 's,^,firmware/,' \
             --exclude='.git' \
             --exclude='.github' \
             .
+          mv /tmp/firmware.tar.gz .
 
       - name: Create release
         uses: softprops/action-gh-release@v2
